@@ -1,0 +1,83 @@
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true # 开启 Restful 请求
+  application:
+    name: system-user
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.222.142.18:3306/cloud_demo?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: woainiMJG.0811
+    druid:
+      aop-patterns: space.muqingcloud.*
+      filters: stat,wall,slf4j
+      max-active: 10
+      # 开启监控页
+      stat-view-servlet:
+        enabled: true
+        login-password: 123456
+        login-username: admin
+        reset-enable: false
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      filter:
+        stat: #sql监控
+          slow-sql-millis: 1000 # 默认3000毫秒，这里超过1s，就是慢，记录到日志
+          logSlowSql: true # 开启慢SQL记录功能
+          enabled: true # 开启DruidDataSource状态监控
+          db-type: mysql # 数据库的类型
+        wall: #防火墙
+          enabled: true
+          config:
+            drop-table-allow: false
+        slf4j:
+          enabled: true
+          statement-log-error-enabled: true
+          statement-create-after-log-enabled: false
+          statement-close-after-log-enabled: false
+          result-set-open-after-log-enabled: false
+          result-set-close-after-log-enabled: false
+
+# 配置mybatis规则
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #sql映射文件位置
+
+# 服务运行端口
+server:
+  port: 8002
+
+# 日志文件配置
+logging:
+  file:
+    name: log/system-usertwo.log
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} : [%thread] : %-5level : %logger{50} : %msg%n'
+
+eureka:
+  client:
+    #表示是否将自己注册进Eureka server默认为true。
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: user8002
+    #访问路径可以显示IP地址
+    prefer-ip-address: true
+    #Eureka客户端向服务端发送心跳的时间间隔，单位为秒(默认是30秒)
+    #lease-renewal-interval-in-seconds: 1
+    #Eureka服务端在收到最后一次心跳后等待时间上限，单位为秒(默认是90秒)，超时将剔除服务
+    #lease-expiration-duration-in-seconds: 2
+# spring-boot-starter-actuator配置
+management:
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露
