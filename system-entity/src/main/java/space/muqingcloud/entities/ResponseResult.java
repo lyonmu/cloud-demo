@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ResponseResult<T> {
     private Integer code;
     private String message;
+    private String port;
     private T data;
 }

@@ -24,7 +24,7 @@ public class UserController {
     @GetMapping("/users")
     ResponseResult<List<User>> selectAll() {
         List<User> users = userService.selectAll();
-        ResponseResult<List<User>> responseResult = new ResponseResult<>(200, "查询所有用户信息", users);
+        ResponseResult<List<User>> responseResult = new ResponseResult<>(200, "查询所有用户信息", serverPort, users);
         log.info(JSON.toJSONString(responseResult));
         return responseResult;
     }
@@ -32,7 +32,7 @@ public class UserController {
     @GetMapping("/user/{id}")
     ResponseResult<User> selectOne(@PathVariable("id") Long id) {
         User user = userService.selectOne(id);
-        ResponseResult<User> responseResult = new ResponseResult<>(200, "查询ID为" + id + "的用户信息", user);
+        ResponseResult<User> responseResult = new ResponseResult<>(200, "查询ID为" + id + "的用户信息",  serverPort,user);
         log.info(JSON.toJSONString(responseResult));
         return responseResult;
     }
@@ -40,7 +40,7 @@ public class UserController {
     @PostMapping("/user")
     ResponseResult<User> insert(User user) {
         int i = userService.insert(user);
-        ResponseResult<User> responseResult = new ResponseResult<>(200, "添加新的用户", user);
+        ResponseResult<User> responseResult = new ResponseResult<>(200, "添加新的用户", serverPort, user);
         log.info(JSON.toJSONString(responseResult));
         return responseResult;
     }
@@ -48,7 +48,7 @@ public class UserController {
     @PutMapping("/user")
     ResponseResult<User> update(User user) {
         int i = userService.update(user);
-        ResponseResult<User> responseResult = new ResponseResult<>(200, "修改ID为" + user.getId() + "的用户信息", user);
+        ResponseResult<User> responseResult = new ResponseResult<>(200, "修改ID为" + user.getId() + "的用户信息", serverPort, user);
         log.info(JSON.toJSONString(responseResult));
         return responseResult;
     }
@@ -56,7 +56,7 @@ public class UserController {
     @DeleteMapping("/user/{id}")
     ResponseResult<User> delete(@PathVariable("id") Long id) {
         User user = userService.selectOne(id);
-        ResponseResult<User> responseResult = new ResponseResult<>(200, "删除ID为" + id + "的用户信息", user);
+        ResponseResult<User> responseResult = new ResponseResult<>(200, "删除ID为" + id + "的用户信息", serverPort, user);
         log.info(JSON.toJSONString(responseResult));
         return responseResult;
     }
