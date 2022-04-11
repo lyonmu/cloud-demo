@@ -13,3 +13,6 @@ spring:
       discovery:
         #hostname: 127.0.0.1
         service-name: ${spring.application.name}
+    loadbalancer:
+      ribbon:
+        enabled: false
