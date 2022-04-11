@@ -18,6 +18,7 @@
         <module>cloud-consul-user</module>
         <module>cloud-consul-consumer</module>
         <module>cloud-consul-usertwo</module>
+        <module>cloud-feign-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
