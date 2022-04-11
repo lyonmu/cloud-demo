@@ -22,5 +22,12 @@ public class UserController {
         return consumerFeignService.selectAll();
     }
 
+    @GetMapping("/timeout")
+    ResponseResult<String> timeout() {
+        return consumerFeignService.timeout();
+    }
+
+    ;
+
 
 }

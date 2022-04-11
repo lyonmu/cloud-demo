@@ -59,4 +59,16 @@ public class UserController {
         log.info(JSON.toJSONString(responseResult));
         return responseResult;
     }
+
+    @GetMapping("/timeout")
+    ResponseResult<String> timeout() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ResponseResult<String> responseResult = new ResponseResult<>(200, "超时测试", serverPort, "超时测试");
+        log.info(JSON.toJSONString(responseResult));
+        return responseResult;
+    }
 }

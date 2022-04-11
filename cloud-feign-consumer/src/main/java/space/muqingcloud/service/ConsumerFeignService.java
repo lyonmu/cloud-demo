@@ -13,4 +13,7 @@ import java.util.List;
 public interface ConsumerFeignService {
     @GetMapping("/users")
     ResponseResult<List<User>> selectAll();
+
+    @GetMapping("/timeout")
+    ResponseResult<String> timeout();
 }
