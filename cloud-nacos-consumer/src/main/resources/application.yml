@@ -1,0 +1,23 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: cloud-nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.103:8848 #配置Nacos地址
+
+logging:
+  file:
+    name: log/cloud-nacos-consumer.log
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} : [%thread] : %-5level : %logger{50} : %msg%n'
+
+# spring-boot-starter-actuator配置
+management:
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露

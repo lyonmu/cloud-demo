@@ -23,6 +23,7 @@
         <module>cloud-hystrix-consumer</module>
         <module>cloud-nacos-use</module>
         <module>cloud-nacos-usetwo</module>
+        <module>cloud-nacos-consumer</module>
     </modules>
     <packaging>pom</packaging>
 

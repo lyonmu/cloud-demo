@@ -27,7 +27,4 @@ public class UserController {
         return consumerFeignService.timeout();
     }
 
-    ;
-
-
 }
