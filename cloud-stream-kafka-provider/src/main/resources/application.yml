@@ -1,0 +1,39 @@
+server:
+  port: 7071
+spring:
+  application:
+    name: cloud-stream-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.103:8848 #配置Nacos地址
+    stream:
+      binders: # 在此处配置要绑定的kafka的服务信息；
+        defaultkafka: # 表示定义的名称，用于于binding整合
+          type: kafka # 消息组件类型
+          environment: # 设置kafka的相关的环境配置
+            spring:
+              kafka:
+                bootstrap-servers: 192.168.0.103:9092,192.168.0.103:9093,192.168.0.103:9094 #kafka集群的地址
+      bindings: # 服务的整合处理
+        output: # 这个名字是一个通道的名称
+          destination: studyTopic # 表示要使用的Topic名称定义
+          content-type: application/json # 设置消息类型，本次为json，文本则设置“text/plain”
+          binder: defaultkafka # 设置要绑定的消息服务的具体设置
+logging:
+  file:
+    name: log/cloud-stream-provider.log
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} : [%thread] : %-5level : %logger{50} : %msg%n'
+
+# spring-boot-starter-actuator配置
+management:
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露
+
+
+
+
