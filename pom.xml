@@ -19,6 +19,8 @@
         <module>cloud-consul-consumer</module>
         <module>cloud-consul-usertwo</module>
         <module>cloud-feign-consumer</module>
+        <module>cloud-hystrix-user</module>
+        <module>cloud-hystrix-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
