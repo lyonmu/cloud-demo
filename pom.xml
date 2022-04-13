@@ -27,6 +27,9 @@
         <module>cloud-nacos-config</module>
         <module>cloud-stream-kafka-provider</module>
         <module>cloud-stream-kafka-consumer</module>
+        <module>cloud-zk-user</module>
+        <module>cloud-zk-consumer</module>
+        <module>cloud-zk-usertwo</module>
     </modules>
     <packaging>pom</packaging>
 
