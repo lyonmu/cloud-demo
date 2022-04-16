@@ -8,14 +8,25 @@ spring:
       discovery:
         server-addr: 192.168.0.103:8848 #配置Nacos地址
     stream:
-      kafka:
-        binder:
-          brokers: 192.168.0.103:9092,192.168.0.103:9093,192.168.0.103:9094
+      #      kafka:
+      #        binder:
+      #          brokers: 192.168.0.103:9092,192.168.0.103:9093,192.168.0.103:9094
+      binders: # 在此处配置要绑定的rabbitmq的服务信息；
+        defaultRabbit: # 表示定义的名称，用于于binding整合
+          type: rabbit # 消息组件类型
+          environment: # 设置rabbitmq的相关的环境配置
+            spring:
+              rabbitmq:
+                host: 192.168.0.103
+                port: 5672
+                username: guest
+                password: guest
       bindings: # 服务的整合处理
         input: # 这个名字是一个通道的名称
           destination: studyTopic # 表示要使用的Topic名称定义
           content-type: application/json # 设置消息类型，本次为json，文本则设置“text/plain”
           group: consumer-group-a
+          binder: defaultRabbit
 # spring-boot-starter-actuator配置
 management:
   endpoints:
