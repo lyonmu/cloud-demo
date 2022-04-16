@@ -1,5 +1,6 @@
 package space.muqingcloud.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,12 +8,15 @@ import org.springframework.stereotype.Service;
 import space.muqingcloud.entities.ResponseResult;
 
 @Service
+@DefaultProperties(defaultFallback = "DefaultFallbackMethod")
 public class UserService {
 
     @Value("${server.port}")
     private String serverPort;
 
+    @HystrixCommand
     public ResponseResult<String> userInfoSuccess() {
+        int number = 10 / 0;
         ResponseResult<String> result = new ResponseResult<>(200, "限流测试成功的结果", serverPort, "成功的线程：" + Thread.currentThread().getName());
         return result;
     }
@@ -36,4 +40,10 @@ public class UserService {
         ResponseResult<String> result = new ResponseResult<>(200, "限流测试超时的fallback", serverPort, "fallback的线程：" + Thread.currentThread().getName());
         return result;
     }
+
+    public ResponseResult<String> DefaultFallbackMethod() {
+        ResponseResult<String> result = new ResponseResult<>(200, "默认限流的fallback", serverPort, "默认限流的fallback的线程：" + Thread.currentThread().getName());
+        return result;
+    }
+
 }
