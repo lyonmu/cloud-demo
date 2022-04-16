@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @EnableBinding(Sink.class)
 @Slf4j
-public class ConsumerMessageService {
+public class ConsumerMessageServiceTwo {
     @Value("${server.port}")
     private String serverPort;
 
