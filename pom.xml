@@ -30,6 +30,7 @@
         <module>cloud-zk-user</module>
         <module>cloud-zk-consumer</module>
         <module>cloud-zk-usertwo</module>
+        <module>cloud-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
