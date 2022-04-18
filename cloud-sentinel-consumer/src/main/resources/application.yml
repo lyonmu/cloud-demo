@@ -1,0 +1,23 @@
+server:
+  port: 7073
+spring:
+  application:
+    name: cloud-sentinel-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.103 #配置Nacos地址
+    sentinel:
+      eager: true # 取消Sentinel控制台懒加载(默认false)
+      transport:
+        dashboard: 192.168.0.103:8080 # Sentinel 控制台地址
+        port: 8719 #应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer
+        client-ip: 192.168.0.101
+  zipkin:
+    base-url: http://192.168.0.103:9411
+  sleuth:
+    sampler:
+      probability: 1
+feign:
+  sentinel:
+    enabled: true

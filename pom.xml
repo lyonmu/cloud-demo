@@ -34,6 +34,9 @@
         <module>cloud-stream-kafka-consumertwo</module>
         <module>cloud-sentinel-user</module>
         <module>cloud-spring-boot-admin</module>
+        <module>cloud-sentinel-producer-first</module>
+        <module>cloud-sentinel-producer-second</module>
+        <module>cloud-sentinel-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
