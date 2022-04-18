@@ -6,9 +6,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.0.103:8848 #配置Nacos地址
+        server-addr: 192.168.0.103 #配置Nacos地址
   zipkin:
-    base-url: http://localhost:9411
+    base-url: http://192.168.0.103:9411
   sleuth:
     sampler:
       probability: 1

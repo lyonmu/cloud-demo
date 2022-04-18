@@ -32,6 +32,7 @@
         <module>cloud-zk-usertwo</module>
         <module>cloud-gateway</module>
         <module>cloud-stream-kafka-consumertwo</module>
+        <module>cloud-sentinel-user</module>
     </modules>
     <packaging>pom</packaging>
 

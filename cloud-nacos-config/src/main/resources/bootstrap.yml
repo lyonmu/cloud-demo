@@ -8,12 +8,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.0.103:8848 #Nacos服务注册中心地址
+#        server-addr: 192.168.0.103:8848 #Nacos服务注册中心地址
+        server-addr: 192.168.0.103 #使用Nginx代理的Nacos服务注册中心集群地址
       config:
         server-addr: 192.168.0.103:8848 #Nacos作为配置中心地址
         file-extension: yaml #指定yaml格式的配置
         group: DEV_GROUP
-        namespace: b6b2c782-8e2a-4340-8dd5-601506feecb5
+        namespace: 0be34c50-50be-499b-941e-48eb8e57e3f9
 
 
 # ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
