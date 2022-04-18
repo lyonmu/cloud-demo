@@ -1,0 +1,10 @@
+server:
+  port: 8987
+snowparam:
+  segment: false
+  url: localhost:3306
+  username: root
+  password: 123456
+  snowflake: true
+  port: 2181
+  address: localhost
