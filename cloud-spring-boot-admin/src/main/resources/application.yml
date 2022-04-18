@@ -1,0 +1,22 @@
+server:
+  port: 7003
+spring:
+  application:
+    name: cloud-admin-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.103 #配置Nacos地址
+  zipkin:
+    base-url: http://192.168.0.103:9411
+  sleuth:
+    sampler:
+      probability: 1
+
+# spring-boot-starter-actuator配置
+management:
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露
