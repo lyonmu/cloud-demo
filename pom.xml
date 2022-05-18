@@ -37,7 +37,6 @@
         <module>cloud-sentinel-producer-first</module>
         <module>cloud-sentinel-producer-second</module>
         <module>cloud-sentinel-consumer</module>
-        <module>cloud-leaf-demo</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -147,16 +146,6 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
                 <version>${bootadmin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>${bootadmin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sankuai.inf.leaf</groupId>
-                <artifactId>leaf-core</artifactId>
-                <version>${leaf.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
